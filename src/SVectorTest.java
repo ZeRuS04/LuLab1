@@ -1,6 +1,8 @@
 import junit.framework.TestCase;
 import org.junit.Test;
 
+import java.util.Iterator;
+
 import static org.junit.Assert.*;
 
 /**
@@ -65,6 +67,22 @@ public class SVectorTest extends TestCase {
         assertEquals(instance.indexOf("111"), 0);
         assertEquals(instance.indexOf("333"), 2);
         assertEquals(instance.indexOf("fdfd"), -1);
+
+    }
+
+    @Test
+    public void testIterator() {
+        SVector<String> instance = new SVector<>();
+        instance.add("111");
+        instance.add("222");
+        instance.add("333");
+        instance.add("444");
+        instance.add("555");
+
+        Iterator<String> it = instance.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
 
     }
 }

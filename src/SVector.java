@@ -1,10 +1,46 @@
+import java.util.Iterator;
 import static java.lang.System.arraycopy;
 
-public class SVector<T> implements IVector<T> {
+public class SVector<T> implements IVector<T>, Iterable<T> {
 
     private T[] _array;
     private int _length;
     private int _cursor;
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>(){
+            private int index = -1;
+            @Override
+            public boolean hasNext() {
+                return index < _cursor;
+            }
+
+            @Override
+            public T next() {
+                if(hasNext()){
+                    index++;
+                    return _array[index];
+                }
+                return null;
+            }
+
+            @Override
+            public void remove() {
+                if(index < 0){
+                    return;
+                }
+
+                SVector.this.remove(index);
+                if (index == 0) {
+                    index = 0;
+                } else {
+                    index -= 1;
+                }
+            }
+        };
+
+    }
 
     public SVector(){
         _length = 1;
