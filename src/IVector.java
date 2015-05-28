@@ -1,20 +1,20 @@
 /**
  * Саморасширяющаяся коллекция. Объекты хранятся в массиве в порядке добавления.
  */
-public interface IVector {
+public interface IVector<T> {
 
     /**
      * Добавляет объект в коллекцию
      * @param o
      */
-    void add(Object o);
+    void add(T o);
 
     /**
      * Добавляет объект в коллекцию на указанную позицию
      * @param o
      * @param pos
      */
-    void add(Object o, int pos);
+    void add(T o, int pos);
 
     /**
      * Удаляет объект из коллекции, находящийся на указанной позиции
@@ -27,12 +27,12 @@ public interface IVector {
      * @param index
      * @return
      */
-    Object get(int index);
+    T get(int index);
 
     /**
      * Возвращает индекс объекта, если такой есть в векторе. Если такого нет, то -1.
      * @param o
      * @return
      */
-    int indexOf(Object o);
+    int indexOf(T o);
 }
